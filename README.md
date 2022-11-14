@@ -1,2 +1,2 @@
 ## Herramientas
-[DB Browser for SQLite](https://sqlitebrowser.org).
+[DB Browser for SQLite](https://sqlitebrowser.org)
