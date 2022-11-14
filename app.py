@@ -77,7 +77,7 @@ def filtrar():
 def limpiarPantalla():
     system("cls")
 
-def principal():
+if __name__ == '__main__':
     Db.crear()    
     while True:        
         print("=========================================")
@@ -120,5 +120,3 @@ def principal():
                 print("Por favor, seleccione una opción válida")                
             else:
                 print("Se produjo un error en la aplicación:", ex)
-
-principal()
