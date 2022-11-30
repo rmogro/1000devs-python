@@ -31,7 +31,8 @@ class App:
         Login(self.root)
 
 if __name__ == "__main__":
-    Db.crear()
+    Db.crear_tablas()
+    Db.poblar_tablas()
     title = "Cinemark" # "Supermarket"
     root = tk.Tk()
     root.iconbitmap(default=f"{title.lower()}.ico")

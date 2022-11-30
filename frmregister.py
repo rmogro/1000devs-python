@@ -4,6 +4,7 @@ import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgBox
 import bll.usuarios as user
 from datetime import date
+from dal.db import Db
 
 class RegisterUser(tk.Toplevel):
     def __init__(self, master=None):
@@ -182,13 +183,16 @@ class RegisterUser(tk.Toplevel):
         GButton_825.place(x=270,y=370,width=70,height=25)
         GButton_825["command"] = self.GButton_825_command
 
-        cb_roles = ttk.Combobox(self, state="readonly", values=["Administrador", "Usuario", "Supervisor"])        
+        cb_roles = ttk.Combobox(self, state="readonly", values=["Administrador", "Usuario", "Supervisor"], name="cbRoles")        
         cb_roles.place(x=140,y=330,width=283,height=30)
 
         self.mainloop()
 
     def get_value(self, name):
         return self.nametowidget(name).get()
+
+    def get_index(self, name):
+        return self.nametowidget(name).current() + 1
 
     def GButton_341_command(self):
         self.destroy()
@@ -197,18 +201,17 @@ class RegisterUser(tk.Toplevel):
         try:            
             apellido = self.get_value("txtApellido")
             nombre = self.get_value("txtNombre")            
-            fecha_nac = self.get_value("txtFechaNac")
-            #fecha = date(int(fecha_nac[6:]), int(fecha_nac[3:5]), int(fecha_nac[0:2]))            
+            fecha_nac = Db.formato_fecha_db(self.get_value("txtFechaNac"))            
             dni = self.get_value("txtDni")
             email = self.get_value("txtEmail")            
             usuario = self.get_value("txtUsuario")
 
             contrasenia = self.get_value("txtContrasenia")            
             confirmacion = self.get_value("txtConfirmacion")
+            rol_id = self.get_index("cbRoles")
 
-            rol_id = 1
-        
-            user.agregar(apellido, nombre, fecha_nac, dni, email, usuario, contrasenia, 1)
+            # todo validar los datos antes de ingresar
+            user.agregar(apellido, nombre, fecha_nac, dni, email, usuario, contrasenia, rol_id)
             tkMsgBox.showinfo(title="Super", message="Registro agregado!!!!!!")
             self.destroy()
         except Exception as ex:
