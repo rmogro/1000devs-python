@@ -23,7 +23,19 @@ class Db:
     
     @staticmethod
     def crear():
-        tabla_usuarios = 'CREATE TABLE IF NOT EXISTS "usuarios" ("id" INTEGER NOT NULL,"user_name" VARCHAR(100),"email" VARCHAR(50), PRIMARY KEY("id" AUTOINCREMENT))'
+        tabla_usuarios = '''CREATE TABLE IF NOT EXISTS "Usuarios" (
+                            "UsuarioId"	INTEGER NOT NULL,
+                            "Apellido"	VARCHAR(50),
+                            "Nombre"	VARCHAR(30),
+                            "FechaNacimiento"	VARCHAR(23),
+                            "Dni"	INTEGER,
+                            "CorreoElectronico"	VARCHAR(30),
+                            "Usuario"	VARCHAR(15) UNIQUE,
+                            "Contrasenia"	VARCHAR(100),
+                            "RolId"	INTEGER,
+                            "Activo"	INTEGER NOT NULL DEFAULT 1,
+                            PRIMARY KEY("UsuarioId" AUTOINCREMENT)
+                         );'''
         with sqlite3.connect(database) as cnn:
             cursor = cnn.cursor()
             cursor.execute(tabla_usuarios)

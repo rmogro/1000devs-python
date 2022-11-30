@@ -1,8 +1,8 @@
 from dal.db import Db
 
-def agregar(user_name, email):    
-    sql = "INSERT INTO usuarios(user_name, email) VALUES(?, ?)"    
-    parametros = (user_name, email)
+def agregar(apellido, nombre, fecha_nacimiento, dni, correo_electronico, usuario, contrasenia, rol_Id):    
+    sql = "INSERT INTO Usuarios(Apellido, Nombre, FechaNacimiento, Dni, CorreoElectronico, Usuario, Contrasenia, RolId) VALUES(?,?,?,?,?,?,?,?)"    
+    parametros = (apellido, nombre, fecha_nacimiento, dni, correo_electronico, usuario, contrasenia, rol_Id)
     Db.ejecutar(sql, parametros)
 
 def actualizar(id, user_name, email):    
