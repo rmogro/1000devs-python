@@ -33,8 +33,8 @@ class App:
 if __name__ == "__main__":
     Db.crear_tablas()
     Db.poblar_tablas()
-    title = "Cinemark" # "Supermarket"
+    project = "cinemark" #"supermarket"
     root = tk.Tk()
-    root.iconbitmap(default=f"{title.lower()}.ico")
-    app = App(root, title)
+    root.iconbitmap(default=f"{project}.ico")
+    app = App(root, project.capitalize())
     root.mainloop()

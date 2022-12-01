@@ -2,7 +2,7 @@ import tkinter as tk
 import tkinter.ttk as ttk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgBox
-import bll.usuarios as usuario
+import bll.usuarios as user
 import bll.roles as rol
 from datetime import date
 
@@ -216,8 +216,11 @@ class RegisterUser(tk.Toplevel):
             rol_id = self.get_index("cbRoles")
 
             # TODO validar los datos antes de ingresar
-            usuario.agregar(apellido, nombre, fecha_nac, dni, email, usuario, contrasenia, rol_id)
-            tkMsgBox.showinfo(title="Super", message="Registro agregado!!!!!!")
-            self.destroy()
+            if not user.existe(usuario):
+                user.agregar(apellido, nombre, fecha_nac, dni, email, usuario, contrasenia, rol_id)
+                tkMsgBox.showinfo(self.master.title(), "Registro agregado!!!!!!")
+                self.destroy()
+            else:
+                tkMsgBox.showwarning(self.master.title(), "Usuario existente en nuestros registros")
         except Exception as ex:
-            tkMsgBox.showerror("Super", str(ex))
+            tkMsgBox.showerror(self.master.title(), str(ex))
