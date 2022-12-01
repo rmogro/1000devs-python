@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgBox
 from frmregister import RegisterUser
+from frmdashboard import Dashboard
 import bll.usuarios as user
 
 class Login(tk.Toplevel):
@@ -80,9 +81,7 @@ class Login(tk.Toplevel):
         GButton_946["text"] = "Crear cuenta"
         GButton_946.place(x=10,y=90,width=101,height=25)
         GButton_946["command"] = self.GButton_946_command
-        GButton_946["border"] = 0
-
-        self.mainloop()
+        GButton_946["border"] = 0        
 
     def GButton_793_command(self):
         try:
@@ -94,7 +93,7 @@ class Login(tk.Toplevel):
 
             if usuario != "":
                 if user.validar(usuario, contrasenia):
-                    # TODO abrir pantalla con los menues
+                    Dashboard(self.master)
                     self.destroy()
                 else:
                     tkMsgBox.showwarning(self.master.title(), "Usuario/Contraseña incorrecta")
