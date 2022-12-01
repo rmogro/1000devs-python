@@ -19,12 +19,18 @@ def eliminar(id, logical = True):
     Db.ejecutar(sql, parametros)
 
 def listar():
-    sql = "SELECT Apellido, Nombre, FechaNacimiento, Dni, CorreoElectronico, Usuario, RolId FROM Usuarios WHERE Activo = 1;"
+    sql = '''SELECT u.UsuarioId, u.Apellido, u.Nombre, u.FechaNacimiento, u.Dni, u.CorreoElectronico, u.Usuario, u.RolId, r.Nombre
+            FROM Usuarios u
+            INNER JOIN Roles r ON u.RolId = r.RolId
+            WHERE u.Activo = 1;'''
     result = Db.consultar(sql)
     return result
 
 def filtrar(usuario):    
-    sql = "SELECT Apellido, Nombre, FechaNacimiento, Dni, CorreoElectronico, Usuario, RolId FROM Usuarios WHERE Usuario LIKE ? AND Activo = 1;"
+    sql = '''SELECT u.UsuarioId, u.Apellido, u.Nombre, u.FechaNacimiento, u.Dni, u.CorreoElectronico, u.Usuario, u.RolId, r.Nombre
+            FROM Usuarios u
+            INNER JOIN Roles r ON u.RolId = r.RolId
+            WHERE u.Usuario LIKE ? AND u.Activo = 1;'''    
     parametros = ('%{}%'.format(usuario),)    
     result = Db.consultar(sql, parametros)
     return result
