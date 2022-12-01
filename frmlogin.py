@@ -1,7 +1,7 @@
 import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgBox
-from frmregister import RegisterUser
+from frmuser import User
 from frmdashboard import Dashboard
 import bll.usuarios as user
 
@@ -60,7 +60,7 @@ class Login(tk.Toplevel):
         GButton_793["justify"] = "center"
         GButton_793["text"] = "Aceptar"
         GButton_793.place(x=290,y=90,width=70,height=25)
-        GButton_793["command"] = self.GButton_793_command
+        GButton_793["command"] = self.iniciar_sesion
 
         GButton_100=tk.Button(self)
         GButton_100["bg"] = "#f0f0f0"
@@ -70,7 +70,7 @@ class Login(tk.Toplevel):
         GButton_100["justify"] = "center"
         GButton_100["text"] = "Cancelar"
         GButton_100.place(x=370,y=90,width=70,height=25)
-        GButton_100["command"] = self.GButton_100_command
+        GButton_100["command"] = self.cerrar
 
         GButton_946=tk.Button(self)
         GButton_946["bg"] = "#f0f0f0"
@@ -80,10 +80,10 @@ class Login(tk.Toplevel):
         GButton_946["justify"] = "center"
         GButton_946["text"] = "Crear cuenta"
         GButton_946.place(x=10,y=90,width=101,height=25)
-        GButton_946["command"] = self.GButton_946_command
+        GButton_946["command"] = self.abrir_user
         GButton_946["border"] = 0        
 
-    def GButton_793_command(self):
+    def iniciar_sesion(self):
         try:
             txtUsuario = self.nametowidget("txtUsuario")
             usuario = txtUsuario.get()            
@@ -102,8 +102,8 @@ class Login(tk.Toplevel):
         except Exception as ex:
             tkMsgBox.showerror(self.master.title(), str(ex))
 
-    def GButton_100_command(self):
+    def cerrar(self):
         self.destroy()
 
-    def GButton_946_command(self):
-        RegisterUser(self.master)
+    def abrir_user(self):
+        User(self.master)

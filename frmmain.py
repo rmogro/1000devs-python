@@ -25,9 +25,9 @@ class App:
         GButton_284["justify"] = "center"
         GButton_284["text"] = "Abrir " + title
         GButton_284.place(x=10,y=10,width=512,height=30)
-        GButton_284["command"] = self.open_login
+        GButton_284["command"] = self.abrir_login
 
-    def open_login(self):
+    def abrir_login(self):
         Login(self.root)
 
 if __name__ == "__main__":

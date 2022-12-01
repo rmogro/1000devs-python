@@ -1,13 +1,12 @@
 import tkinter as tk
 import tkinter.font as tkFont
+from frmusers import Users
 
 class Dashboard(tk.Toplevel):
     def __init__(self, master=None):
         super().__init__(master)
-        self.master = master
-        #setting title
-        self.title("Menú Pricipal")
-        #setting window size
+        self.master = master        
+        self.title("Menú Pricipal")        
         width=548
         height=407
         screenwidth = self.winfo_screenwidth()
@@ -24,7 +23,7 @@ class Dashboard(tk.Toplevel):
         GButton_245["justify"] = "center"
         GButton_245["text"] = "Usuarios"
         GButton_245.place(x=10,y=40,width=165,height=45)
-        GButton_245["command"] = self.GButton_245_command
+        GButton_245["command"] = self.abrir_usuarios
 
         GLabel_996=tk.Label(self)
         ft = tkFont.Font(family='Times',size=10)
@@ -42,7 +41,7 @@ class Dashboard(tk.Toplevel):
         GButton_196["justify"] = "center"
         GButton_196["text"] = "Salas"
         GButton_196.place(x=190,y=40,width=165,height=45)
-        GButton_196["command"] = self.GButton_196_command
+        GButton_196["command"] = self.abrir_salas
 
         GButton_430=tk.Button(self)
         GButton_430["bg"] = "#f0f0f0"
@@ -52,15 +51,13 @@ class Dashboard(tk.Toplevel):
         GButton_430["justify"] = "center"
         GButton_430["text"] = "Descuentos"
         GButton_430.place(x=370,y=40,width=165,height=45)
-        GButton_430["command"] = self.GButton_430_command
+        GButton_430["command"] = self.abrir_descuentos
 
-    def GButton_245_command(self):
-        print("command")
+    def abrir_usuarios(self):
+        Users(self)
 
+    def abrir_salas(self):
+        print("salas")
 
-    def GButton_196_command(self):
-        print("command")
-
-
-    def GButton_430_command(self):
-        print("command")
+    def abrir_descuentos(self):
+        print("descuentos")
