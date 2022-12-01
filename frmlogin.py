@@ -94,7 +94,7 @@ class Login(tk.Toplevel):
 
             if usuario != "":
                 if user.validar(usuario, contrasenia):
-                    # abrir pantalla
+                    # TODO abrir pantalla con los menues
                     self.destroy()
                 else:
                     tkMsgBox.showwarning(self.master.title(), "Usuario/Contraseña incorrecta")

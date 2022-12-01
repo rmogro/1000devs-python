@@ -2,11 +2,12 @@ import tkinter as tk
 import tkinter.ttk as ttk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgBox
-import bll.usuarios as user
+import bll.usuarios as usuario
+import bll.roles as rol
 from datetime import date
 
 class RegisterUser(tk.Toplevel):
-    def __init__(self, master=None):
+    def __init__(self, master=None, isAdmin = False):
         super().__init__(master)
         self.master = master        
         self.title("Registro de cuenta")        
@@ -162,7 +163,12 @@ class RegisterUser(tk.Toplevel):
         GLabel_975["text"] = "Rol:"
         GLabel_975.place(x=10,y=330,width=122,height=30)
 
-        cb_roles = ttk.Combobox(self, state="readonly", values=["Administrador", "Usuario", "Supervisor"], name="cbRoles")        
+        roles = dict(rol.listar())        
+        if isAdmin:
+            cb_roles = ttk.Combobox(self, state="readonly", values=list(roles.values()), name="cbRoles")
+        else:
+            cb_roles = ttk.Combobox(self, state="disabled", values=list(roles.values()), name="cbRoles")
+            cb_roles.set(roles[4])
         cb_roles.place(x=140,y=330,width=283,height=30)
 
         GButton_825=tk.Button(self)
@@ -209,8 +215,8 @@ class RegisterUser(tk.Toplevel):
             confirmacion = self.get_value("txtConfirmacion")
             rol_id = self.get_index("cbRoles")
 
-            # todo validar los datos antes de ingresar
-            user.agregar(apellido, nombre, fecha_nac, dni, email, usuario, contrasenia, rol_id)
+            # TODO validar los datos antes de ingresar
+            usuario.agregar(apellido, nombre, fecha_nac, dni, email, usuario, contrasenia, rol_id)
             tkMsgBox.showinfo(title="Super", message="Registro agregado!!!!!!")
             self.destroy()
         except Exception as ex:
