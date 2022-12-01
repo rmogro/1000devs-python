@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgBox
 from frmregister import RegisterUser
+import bll.usuarios as user
 
 class Login(tk.Toplevel):
     def __init__(self, master=None):
@@ -25,7 +26,7 @@ class Login(tk.Toplevel):
         GLineEdit_223["text"] = ""
         GLineEdit_223.place(x=120,y=10,width=322,height=30)
 
-        GLineEdit_666=tk.Entry(self, name ="txtContrasenia")
+        GLineEdit_666=tk.Entry(self, name ="txtContrasenia", show="*")
         GLineEdit_666["borderwidth"] = "1px"
         ft = tkFont.Font(family='Times',size=10)
         GLineEdit_666["font"] = ft
@@ -90,12 +91,17 @@ class Login(tk.Toplevel):
 
             txtContrasenia = self.nametowidget("txtContrasenia")
             contrasenia = txtContrasenia.get()
-        
-            print(usuario, contrasenia)
-            ##user.validar(usuario, contrasenia)            
-            self.destroy()
+
+            if usuario != "":
+                if user.validar(usuario, contrasenia):
+                    # abrir pantalla
+                    self.destroy()
+                else:
+                    tkMsgBox.showwarning(self.master.title(), "Usuario/Contraseña incorrecta")
+            else:
+                tkMsgBox.showwarning(self.master.title(), "Ingrese el Usuario para iniciar sesión")
         except Exception as ex:
-            tkMsgBox.showerror(title="Super", message=str(ex))
+            tkMsgBox.showerror(self.master.title(), str(ex))
 
     def GButton_100_command(self):
         self.destroy()

@@ -1,5 +1,6 @@
 import sqlite3
 from datetime import date
+import hashlib
 
 database = "super.db" # todo: por ahora ponemos el nombre de la base aqui, ver mejor opcion
 
@@ -75,6 +76,11 @@ class Db:
     @staticmethod
     def formato_fecha_db(fecha):
         return date(int(fecha[6:]), int(fecha[3:5]), int(fecha[0:2]))
+    
+    @staticmethod
+    def encriptar_contraseña(contrasenia):
+        return hashlib.sha256(contrasenia.encode("utf-8")).hexdigest()
+
 
 
             
