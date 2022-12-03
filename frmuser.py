@@ -7,7 +7,7 @@ import bll.roles as rol
 from datetime import date
 
 class User(tk.Toplevel):
-    def __init__(self, master=None, user_id = None):
+    def __init__(self, master=None, isAdmin = False, user_id = None):
         super().__init__(master)
         self.master = master        
         self.title("Registro de cuenta")        
@@ -164,7 +164,7 @@ class User(tk.Toplevel):
         GLabel_975.place(x=10,y=330,width=122,height=30)
         
         roles = dict(rol.listar())
-        if user_id:
+        if isAdmin:
             cb_roles = ttk.Combobox(self, state="readonly", values=list(roles.values()), name="cbRoles")
         else:
             cb_roles = ttk.Combobox(self, state="disabled", values=list(roles.values()), name="cbRoles")
