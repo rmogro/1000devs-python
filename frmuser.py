@@ -4,7 +4,6 @@ import tkinter.font as tkFont
 import tkinter.messagebox as tkMsgBox
 import bll.usuarios as user
 import bll.roles as rol
-from datetime import date
 
 class User(tk.Toplevel):
     def __init__(self, master=None, isAdmin = False, user_id = None):
