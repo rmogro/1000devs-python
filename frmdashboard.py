@@ -6,7 +6,7 @@ class Dashboard(tk.Toplevel):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master        
-        self.title("Menú Pricipal")        
+        self.title("Menú Principal")        
         width=548
         height=407
         screenwidth = self.winfo_screenwidth()
