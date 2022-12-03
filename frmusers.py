@@ -82,7 +82,7 @@ class Users(Toplevel):
             self.select_id = -1
 
     def agregar(self):
-        User(self)
+        User(self, True)
 
     def editar(self): 
         pass
