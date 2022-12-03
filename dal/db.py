@@ -52,6 +52,7 @@ class Db:
             for tabla, sql in tablas.items():
                 print(f"Creando tabla {tabla}")
                 cursor.execute(sql)
+                # TODO agregar commit
             
     @staticmethod
     def poblar_tablas():        
@@ -80,7 +81,3 @@ class Db:
     @staticmethod
     def encriptar_contraseña(contrasenia):
         return hashlib.sha256(contrasenia.encode("utf-8")).hexdigest()
-
-
-
-            
