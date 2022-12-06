@@ -6,9 +6,9 @@ from frmuser import User
 
 class Users(Toplevel):
     def __init__(self, master=None):
-        super().__init__(master)
-        self.select_id = -1
-        self.master = master        
+        super().__init__(master)        
+        self.master = master
+        self.select_id = -1        
         self.title("Listado de Usuarios")        
         width=800
         height=500
@@ -85,7 +85,7 @@ class Users(Toplevel):
         User(self, True)
 
     def editar(self): 
-        pass
+        User(self, True, self.select_id)
 
     def eliminar(self):
         pass

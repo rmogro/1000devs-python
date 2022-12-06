@@ -6,7 +6,7 @@ import bll.usuarios as user
 import bll.roles as rol
 
 class User(tk.Toplevel):
-    def __init__(self, master=None, isAdmin = False, user_id = None):
+    def __init__(self, master=None, isAdmin = False, user_id = None):        
         super().__init__(master)
         self.master = master        
         self.title("Registro de cuenta")        
@@ -188,7 +188,11 @@ class User(tk.Toplevel):
         GButton_341["justify"] = "center"
         GButton_341["text"] = "Cancelar"
         GButton_341.place(x=350,y=370,width=70,height=25)
-        GButton_341["command"] = self.GButton_341_command        
+        GButton_341["command"] = self.GButton_341_command
+
+        print("Usuario Id:", user_id)
+        # TODO obtener los datos de la base de datos y cargarlos en los textbox
+        GLineEdit_871["text"] = "Apellido" # campo Apellido
 
     def get_value(self, name):
         return self.nametowidget(name).get()
