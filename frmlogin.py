@@ -70,7 +70,7 @@ class Login(tk.Toplevel):
         GButton_100["justify"] = "center"
         GButton_100["text"] = "Cancelar"
         GButton_100.place(x=370,y=90,width=70,height=25)
-        GButton_100["command"] = self.cerrar
+        GButton_100["command"] = self.cancelar
 
         GButton_946=tk.Button(self)
         GButton_946["bg"] = "#f0f0f0"
@@ -102,7 +102,7 @@ class Login(tk.Toplevel):
         except Exception as ex:
             tkMsgBox.showerror(self.master.title(), str(ex))
 
-    def cerrar(self):
+    def cancelar(self):
         self.destroy()
 
     def abrir_user(self):
