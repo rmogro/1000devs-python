@@ -40,7 +40,8 @@ class Users(Toplevel):
         tv.heading("nombre", text="Nombre", anchor=CENTER)
         tv.heading("email", text="Correo electrónico", anchor=CENTER)
         tv.heading("rol", text="Rol", anchor=CENTER)
-        tv.bind("<<TreeviewSelect>>", self.obtener_fila)          
+        tv.bind("<<TreeviewSelect>>", self.obtener_fila)
+        tv.place(x=10,y=40,width=750,height=300)          
         
         self.refrescar()
 
@@ -97,5 +98,4 @@ class Users(Toplevel):
             tvUsuarios.delete(record)
         usuarios = user.listar()
         for usuario in usuarios:
-            tvUsuarios.insert("", END, text=usuario[0], values=(usuario[6], usuario[1], usuario[2], usuario[5], usuario[8]))        
-        tvUsuarios.place(x=10,y=40,width=750,height=300)
+            tvUsuarios.insert("", END, text=usuario[0], values=(usuario[6], usuario[1], usuario[2], usuario[5], usuario[8])) 
