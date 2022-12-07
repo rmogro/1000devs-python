@@ -196,6 +196,7 @@ class User(Toplevel):
                tkMsgBox.showerror(self.master.title(), "Se produjo un error al obtener los datos del usuario, reintente nuevamente")
                self.destroy()
             else:
+                # TODO bloquear el campo usuario
                 GLineEdit_871.insert(0, usuario[1])
                 GLineEdit_911.insert(0, usuario[2])
                 GLineEdit_208.insert(0, usuario[3])
