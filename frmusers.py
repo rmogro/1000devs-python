@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter.font as tkFont
 import tkinter.ttk as ttk
+import tkinter.messagebox as tkMsgBox
 import bll.usuarios as user
 from frmuser import User
 
@@ -89,7 +90,10 @@ class Users(Toplevel):
         User(self, True, self.select_id)
 
     def eliminar(self):
-        pass
+        answer =  tkMsgBox.askokcancel(self.master.master.title(), "¿Está seguro de eliminar este registro?")   
+        if answer:
+            user.eliminar(self.select_id)
+            self.refrescar()
 
     # https://www.youtube.com/watch?v=n0usdtoU5cE
     def refrescar(self):        
