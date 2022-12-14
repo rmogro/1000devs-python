@@ -231,6 +231,21 @@ class User(Toplevel):
             rol_id = self.get_index("cbRoles")
 
             # TODO validar los datos antes de ingresar
+            if apellido == "":
+                tkMsgBox.showerror(self.master.title(), "Apellido es un valor requerido.")
+                return
+            
+            if nombre == "":
+                tkMsgBox.showerror(self.master.title(), "Nombre es un valor requerido.")
+                return
+            
+            # agregar los demas
+            # .....
+            
+            if contrasenia != confirmacion:
+                tkMsgBox.showerror(self.master.title(), "La contraseña con su confirmacion no tienen el mismo valor.")
+                return  
+
             if self.user_id is None:
                 print("Alta de usuario")
                 if not user.existe(usuario):
